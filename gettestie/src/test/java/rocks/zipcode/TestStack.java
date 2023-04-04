@@ -149,9 +149,92 @@ public class TestStack {
     }
 
     // Vector,
+    @Test
+    public void vectorTest(){
+        //vectors lessen the load of increasing in size while adding elements
+        Vector<Integer> vector = new Vector<>();
+
+        vector.ensureCapacity(100);
+        for(int i =0; i<100; i++){
+            vector.add(10);
+        }
+        int expected = 100;
+        int actual = vector.capacity();
+
+        Assert.assertEquals(expected,actual);
+    }
     // TreeMap,
+    @Test
+    public void treeMapTest(){
+        TreeMap<String, Integer> map = new TreeMap<>();
+        Person p = new Person("Henry Fish", 1930);
+
+        map.put(p.getName(), p.getYearOfBirth());
+        Integer expected = 1930;
+        Integer actual = map.get("Henry Fish");
+
+        Assert.assertEquals(expected, actual);
+
+    }
     // TreeSet,
+    @Test
+    public void treeSetTest(){
+        //tree sets order the objects added to it by a comparator
+        TreeSet<Integer> map = new TreeSet<>();
+        Person p = new Person("Henry Fish", 1930);
+
+        map.add(10);
+        map.add(5);
+        map.add(15);
+
+        Integer expected = 5;
+        Integer actual = map.first();
+
+        Assert.assertEquals(expected, actual);
+
+    }
     // Iterator,
+    @Test
+    public void iteratorTest(){
+        ArrayList<Integer> list = new ArrayList<>();
+        Iterator iter = list.iterator();
+
+        list.add(15);
+        list.add(20);
+
+        boolean actual = iter.hasNext();;
+
+        Assert.assertTrue(actual);
+
+    }
     // PriorityQueue
+    @Test
+    public void priorityQueueTest(){
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+        Person p = new Person("Henry Fish", 1930);
+
+        priorityQueue.add(10);
+        priorityQueue.add(11);
+        priorityQueue.add(9);
+
+        Integer expected = 9;
+        Integer actual = priorityQueue.remove();
+
+        Assert.assertEquals(expected, actual);
+
+    }
     // Comparable
+    @Test
+    public void comparableTest(){
+        Person p = new Person("Henry Fish",1930);
+        Person p2 = new Person("Henry Fisk" ,1930);
+
+
+
+        Integer expected = -1;
+        Integer actual = p.compareTo(p2);
+
+        Assert.assertEquals(expected, actual);
+
+    }
 }
